@@ -1,0 +1,85 @@
+ @import "base/listas";
+@import "base/mixin";
+@import "base/extend";
+
+
+.main-index{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1.5fr 1fr 1fr 0.5fr;
+ 
+    grid-template-areas:
+    "main-p main-p"
+    "imagen-uno imagen-dos"
+    "imagen-tres imagen-cuatro"
+    "parrafo parrafo";
+    @extend %columnas;
+    @include alineacion;
+    background-color: nth($colores, 1);
+    .main-p{
+        grid-area: main-p;
+        text-align: center;
+        font-weight: bold;
+        color: nth($colores, 2);
+        font-size: 1.2rem;
+        line-height: 1rem;
+    }
+    .imagen-uno{
+        grid-area: imagen-uno;
+        @include medidas (100px, 100px)
+    }
+    .imagen-dos{
+        grid-area: imagen-dos;
+        @include medidas (100px, 100px)
+    }
+    .iamgen-tres{
+        grid-area: imagen-tres;
+        @include medidas (100px, 100px)
+    }
+    .iamgen-cuatro{
+        grid-area: imagen-cuatro;
+        @include medidas (100px, 100px)
+    }
+    p{
+        grid-area: parrafo;
+        color: nth($colores, 3);
+    }
+}
+ 
+footer{
+    background-color: nth($colores, 1);
+    p{
+        text-align: center;
+        color: nth($colores, 4);
+    }
+}
+ 
+ 
+ 
+ 
+/*mediaqueries*/
+@media screen and (min-width: 600px){
+    .main-index{
+        grid-template-areas:
+        "main-p main-p main-p main-p"
+        "imagen-uno imagen-dos"
+        "imagen-tres imagen-cuatro"
+        "parrafo parrafo parrafo parrafo";
+        @include alineacion;
+        .main-p{
+            font-size: 1.5rem;
+        }
+    }
+}
+ 
+@media screen and (min-width: 1024px){
+ 
+   .main-index{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+    "main-p main-p main-p main-p"
+    "imagen-uno imagen-dos imagen-tres imagen-cuatro"
+    "parrafo parrafo parrafo parrafo";
+   }
+}
